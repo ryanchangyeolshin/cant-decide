@@ -1,2 +1,3 @@
-# cant-decide
-A web application where it makes decisions for you.
+# Can't Decide
+
+A web application for indecisive people who want to be given a decision.
