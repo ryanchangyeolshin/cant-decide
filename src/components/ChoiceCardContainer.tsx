@@ -1,6 +1,14 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme, } from '@material-ui/core/styles';
-import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction, IconButton, Badge, Grow } from '@material-ui/core';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  Badge,
+  Grow
+} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 type ChoiceProps = {
@@ -16,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: "10px",
       borderRadius: "4px",
       padding: "20px",
+      transition: theme.transitions.create("background-color", {
+        duration: 1000
+      }),
       "&:hover": {
         backgroundColor: "yellow",
       },
@@ -36,8 +47,8 @@ export default function ChoiceCardContainer({ choice, index, removeChoice }: Cho
   } 
 
   return (
-    <Grow in={true} timeout={1500} mountOnEnter unmountOnExit>
-      <div>
+    <Grow in={true} timeout={1500} mountOnEnter unmountOnExit={true}>
+      <div className="list-item-container">
         <ListItem button className={classes.listItem}>
           <ListItemIcon>
             <Badge badgeContent={index + 1} color="primary" />
