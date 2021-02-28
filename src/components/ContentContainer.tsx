@@ -1,7 +1,8 @@
 
 import React, { Fragment, useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { TextField, CssBaseline, Typography, Container } from '@material-ui/core';
+import { TextField, CssBaseline, Typography, List } from '@material-ui/core';
+import ChoiceCardContainer from './ChoiceCardContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -9,14 +10,17 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: "100%"
     },
     contentContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       backgroundColor: "#4051B6",
       height: "100vh",
-      margin: "50px 0",
+      margin: "50px 50px",
       borderRadius: "20px",
     },
     choiceInput: {
       width: "90%",
-      margin: "40px 20px",
+      margin: "40px 20px 10px 20px",
       color: "white",
       "& .MuiFormLabel-root.Mui-focused": {
         color: "white"
@@ -34,21 +38,40 @@ const useStyles = makeStyles((theme: Theme) =>
     label: {
       color: "white",
     },
+    list: {
+      width: '90%',
+      borderRadius: "4px",
+      height: "78%",
+      overflow: "scroll"
+    },
   }),
 );
 
 export default function ContentContainer() {
   const classes = useStyles();
+  const [choices, setChoices] = useState([] as string[]);
   const [choice, setChoice] = useState("");
 
   const handleChoiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChoice(choice);
+    setChoice(e.target.value);
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && choice !== "") {
+      setChoices((choices as string[]).concat(choice));
+      setChoice("");
+    }
+  }
+
+  const removeChoice = (index: number) => {
+    const filteredChoices: string[] = choices.filter((choice: string, i: number) => i !== index);
+    setChoices(filteredChoices);
+  }
 
   return (
     <Fragment>
       <CssBaseline />
-      <Container maxWidth="sm" className={classes.containerWrapper}>
+      <div className={classes.containerWrapper}>
         <Typography component="div" className={classes.contentContainer}>
           <TextField
             id="standard-basic"
@@ -64,9 +87,23 @@ export default function ContentContainer() {
               className: classes.input
             }}
             onChange={handleChoiceChange}
+            onKeyDown={handleKeyDown}
+            value={choice}
           />
+          <div className={classes.list}>
+            <List component="nav" aria-label="main mailbox folders">
+              {choices.map((newChoice: string, i: number) =>
+                <ChoiceCardContainer
+                  key={i}
+                  choice={newChoice}
+                  index={i}
+                  removeChoice={removeChoice}
+                />
+              )}
+            </List>
+          </div>
         </Typography>
-      </Container>
+      </div>
     </Fragment>
   );
 };
