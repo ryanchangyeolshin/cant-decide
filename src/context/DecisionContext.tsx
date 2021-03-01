@@ -1,14 +1,14 @@
 import React from 'react';
-import { Decision } from '../interfaces/decision';
+import DecisionType from '../types/decision';
 
-interface DecisionInterface {
-  decision: Decision,
-  setDecision: React.Dispatch<React.SetStateAction<Decision>>,
+type DecisionState = {
+  decision: DecisionType,
+  setDecision: (decision: DecisionType) => void,
   winningChoice: string,
-  setWinningChoice: React.Dispatch<React.SetStateAction<string>>
+  setWinningChoice: (choice: string) => void
 }
 
-const DecisionContext = React.createContext<DecisionInterface>({
+const DecisionContext = React.createContext<DecisionState>({
   decision: { name: "", choices: [] },
   setDecision: () => { },
   winningChoice: "",

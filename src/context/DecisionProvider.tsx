@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DecisionContext from './DecisionContext';
+import DecisionType from '../types/decision';
 
-export default function DecisionProvider(props: React.Props<any>) {
-  const [decision, setDecision] = useState({ name: "", choices: [] });
-  const [winningChoice, setWinningChoice] = useState("");
+const DecisionProvider: React.FC = ({ children }) => {
+  const [decision, setDecision] = useState<DecisionType>({ name: "", choices: [] });
+  const [winningChoice, setWinningChoice] = useState<string>("");
 
   return (
     <DecisionContext.Provider
@@ -14,7 +15,9 @@ export default function DecisionProvider(props: React.Props<any>) {
         setWinningChoice: setWinningChoice,
       }}
     >
-      {props.children}
+      {children}
     </DecisionContext.Provider>
   );
 }
+
+export default DecisionProvider;

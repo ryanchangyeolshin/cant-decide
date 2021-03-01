@@ -1,8 +1,10 @@
 
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { TextField, CssBaseline, Typography, List } from '@material-ui/core';
+import { Typography, List, CssBaseline } from '@material-ui/core';
 import ChoiceCardContainer from './ChoiceCardContainer';
+import InputContainer from './InputContainer';
+import DecisionContext from '../context/DecisionContext';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,39 +20,21 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "50px 50px",
       borderRadius: "20px",
     },
-    choiceInput: {
-      width: "90%",
-      margin: "40px 20px 10px 20px",
-      color: "white",
-      "& .MuiFormLabel-root.Mui-focused": {
-        color: "white"
-      },
-      "& .MuiOutlinedInput-root": {
-        "& .MuiOutlinedInput-notchedOutline": {
-          borderColor: "white"
-        }
-      }
-    },
-    input: {
-      color: "white",
-      outline: 1,
-    },
-    label: {
-      color: "white",
-    },
     list: {
-      width: '90%',
+      width: '100%',
       borderRadius: "4px",
       height: "78%",
-      overflow: "scroll"
+      overflow: "scroll",
+      paddingLeft: "20px",
+      paddingRight: "20px"
     },
   }),
 );
 
-export default function ContentContainer() {
+const ContentContainer = () => {
   const classes = useStyles();
-  const [choices, setChoices] = useState([] as string[]);
-  const [choice, setChoice] = useState("");
+  const { setWinningChoice, decision, setDecision } = useContext(DecisionContext);
+  const [choice, setChoice] = useState<string>("");
 
   const handleChoiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChoice(e.target.value);
@@ -58,41 +42,35 @@ export default function ContentContainer() {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && choice !== "") {
-      setChoices((choices as string[]).concat(choice));
+      setDecision({ ...decision, choices: decision.choices.concat(choice) });
       setChoice("");
     }
   }
 
   const removeChoice = (index: number) => {
-    const filteredChoices: string[] = choices.filter((choice: string, i: number) => i !== index);
-    setChoices(filteredChoices);
+    const filteredChoices: string[] = decision.choices.filter((choice: string, i: number) => i !== index);
+    setDecision({ ...decision, choices: filteredChoices });
+  }
+
+  const randomizeChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const randomIndex: number = Math.floor(Math.random() * decision.choices.length);
+    setWinningChoice(decision.choices[randomIndex]);
   }
 
   return (
     <Fragment>
-      <CssBaseline />
       <div className={classes.containerWrapper}>
+        <CssBaseline />
         <Typography component="div" className={classes.contentContainer}>
-          <TextField
-            id="standard-basic"
-            className={classes.choiceInput}
-            label="Choice"
-            variant="outlined"
-            margin="normal"
-            placeholder="Please provide your choice here..."
-            InputLabelProps={{
-              className: classes.label
-            }}
-            inputProps={{
-              className: classes.input
-            }}
-            onChange={handleChoiceChange}
-            onKeyDown={handleKeyDown}
-            value={choice}
+          <InputContainer
+            choice={choice}
+            handleKeyDown={handleKeyDown}
+            handleChoiceChange={handleChoiceChange}
+            randomizeChoice={randomizeChoice}
           />
           <div className={classes.list}>
             <List component="nav" aria-label="main mailbox folders">
-              {choices.map((newChoice: string, i: number) =>
+              {decision.choices.map((newChoice: string, i: number) =>
                 <ChoiceCardContainer
                   key={i}
                   choice={newChoice}
@@ -107,3 +85,5 @@ export default function ContentContainer() {
     </Fragment>
   );
 };
+
+export default ContentContainer;

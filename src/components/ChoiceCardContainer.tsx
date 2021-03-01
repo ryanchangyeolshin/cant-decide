@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function ChoiceCardContainer({ choice, index, removeChoice }: ChoiceProps) {
   const classes = useStyles();
 
-  const removeChoiceHandler = (e: React.MouseEvent<SVGSVGElement>) => {
+  const removeChoiceHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     removeChoice(index);
   } 
 
@@ -55,8 +55,8 @@ export default function ChoiceCardContainer({ choice, index, removeChoice }: Cho
           </ListItemIcon>
           <ListItemText primary={choice} />
           <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
-              <DeleteIcon onClick={removeChoiceHandler} />
+            <IconButton edge="end" aria-label="delete" onClick={removeChoiceHandler}>
+              <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
