@@ -10,12 +10,7 @@ import {
   Grow
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-type ChoiceCardContainerProps = {
-  choice: string,
-  index: number,
-  removeChoice: Function,
-}
+import ChoiceCardContainerProps from '../types/ChoiceCardContainerProps';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,7 +54,7 @@ const ChoiceCardContainer: React.FC<ChoiceCardContainerProps> = ({ choice, index
           </ListItemIcon>
           <ListItemText primary={choice} />
           <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete" onClick={removeChoiceHandler}>
+            <IconButton data-testid="delete-icon" edge="end" aria-label="delete" onClick={removeChoiceHandler}>
               <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>
