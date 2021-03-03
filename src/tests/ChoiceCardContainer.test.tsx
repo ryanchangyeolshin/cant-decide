@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { render, getByTestId, fireEvent } from '@testing-library/react';
 import ChoiceCardContainer from '../components/ChoiceCardContainer';
 import ChoiceCardContainerProps from '../types/ChoiceCardContainerProps';
