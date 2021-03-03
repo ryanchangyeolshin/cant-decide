@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`This suit is to test the App component Snapshot of App 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular makeStyles-toolBar-2 MuiToolbar-gutters"
+      >
+        <button
+          aria-label="menu"
+          class="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-3 MuiIconButton-colorInherit MuiIconButton-edgeStart"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Login
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </header>
+    <div
+      class="makeStyles-containerWrapper-4"
+    >
+      <div
+        class="MuiTypography-root makeStyles-contentContainer-5 MuiTypography-body1"
+      >
+        <div
+          class="makeStyles-inputContainer-7"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-8 MuiFormControl-marginNormal"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-10 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+              data-shrink="false"
+              for="standard-basic"
+              id="standard-basic-label"
+            >
+              Choice
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-9"
+                id="standard-basic"
+                placeholder="Please provide your choice here..."
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-14"
+                >
+                  <span>
+                    Choice
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-11 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Randomize
+            </span>
+          </button>
+        </div>
+        <div
+          class="makeStyles-list-6"
+        >
+          <nav
+            aria-label="main mailbox folders"
+            class="MuiList-root MuiList-padding"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

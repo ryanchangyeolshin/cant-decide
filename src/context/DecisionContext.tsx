@@ -1,12 +1,5 @@
 import React from 'react';
-import DecisionType from '../types/decision';
-
-type DecisionState = {
-  decision: DecisionType,
-  setDecision: (decision: DecisionType) => void,
-  winningChoice: string,
-  setWinningChoice: (choice: string) => void
-}
+import DecisionState from '../types/DecisionState';
 
 const DecisionContext = React.createContext<DecisionState>({
   decision: { name: "", choices: [] },

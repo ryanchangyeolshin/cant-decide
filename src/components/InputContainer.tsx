@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { makeStyles, createStyles, Theme, } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
 import DecisionContext from '../context/DecisionContext';
+import DecisionState from '../types/DecisionState';
 
 type InputContainerProps = {
   choice: string,
@@ -55,8 +56,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const InputContainer = ({ choice, handleKeyDown, handleChoiceChange, randomizeChoice }: InputContainerProps) => {
-  const { decision } = useContext(DecisionContext);
+const InputContainer: React.FC<InputContainerProps> = ({ choice, handleKeyDown, handleChoiceChange, randomizeChoice }: InputContainerProps) => {
+  const { decision } = useContext<DecisionState>(DecisionContext);
   const classes = useStyles();
 
   return (

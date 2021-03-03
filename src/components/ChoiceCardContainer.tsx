@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-type ChoiceProps = {
+type ChoiceCardContainerProps = {
   choice: string,
   index: number,
   removeChoice: Function,
@@ -33,13 +33,17 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiListItemText-root": {
         "& .MuiTypography-root.MuiListItemText-primary": {
           fontWeight: 900,
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverFlow: "ellipsis",
+          width: "95%"
         }
       }
     }
   }),
 );
 
-export default function ChoiceCardContainer({ choice, index, removeChoice }: ChoiceProps) {
+const ChoiceCardContainer: React.FC<ChoiceCardContainerProps> = ({ choice, index, removeChoice }: ChoiceCardContainerProps) => {
   const classes = useStyles();
 
   const removeChoiceHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -64,3 +68,5 @@ export default function ChoiceCardContainer({ choice, index, removeChoice }: Cho
     </Grow>
   );
 }
+
+export default ChoiceCardContainer;

@@ -1,10 +1,12 @@
 
 import React, { Fragment, useContext, useState } from 'react'
+import { useHistory } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Typography, List, CssBaseline } from '@material-ui/core';
 import ChoiceCardContainer from './ChoiceCardContainer';
 import InputContainer from './InputContainer';
 import DecisionContext from '../context/DecisionContext';
+import DecisionState from '../types/DecisionState';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,16 +33,17 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const ContentContainer = () => {
+const ContentContainer: React.FC = () => {
   const classes = useStyles();
-  const { setWinningChoice, decision, setDecision } = useContext(DecisionContext);
+  const history = useHistory();
+  const { setWinningChoice, decision, setDecision } = useContext<DecisionState>(DecisionContext);
   const [choice, setChoice] = useState<string>("");
 
   const handleChoiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChoice(e.target.value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && choice !== "") {
       setDecision({ ...decision, choices: decision.choices.concat(choice) });
       setChoice("");
@@ -52,9 +55,11 @@ const ContentContainer = () => {
     setDecision({ ...decision, choices: filteredChoices });
   }
 
-  const randomizeChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const randomizeChoice: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
     const randomIndex: number = Math.floor(Math.random() * decision.choices.length);
     setWinningChoice(decision.choices[randomIndex]);
+    history.push("/decision");
+    setDecision({ ...decision, choices: [] });
   }
 
   return (

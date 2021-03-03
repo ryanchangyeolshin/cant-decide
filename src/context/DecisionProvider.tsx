@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DecisionContext from './DecisionContext';
-import DecisionType from '../types/decision';
+import DecisionType from '../types/DecisionType';
 
 const DecisionProvider: React.FC = ({ children }) => {
   const [decision, setDecision] = useState<DecisionType>({ name: "", choices: [] });

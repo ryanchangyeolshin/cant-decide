@@ -6,15 +6,19 @@ import {
 import DecisionProvider from './context/DecisionProvider';
 import NavMenuBar from './components/NavMenuBar';
 import ContentContainer from './components/ContentContainer';
+import WinningChoiceContainer from "./components/WinningChoiceContainer";
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <DecisionProvider>
         <NavMenuBar />
         <Router>
           <Switch>
+            <Route path="/decision">
+              <WinningChoiceContainer />
+            </Route>
             <Route path="/">
               <ContentContainer />
             </Route>
