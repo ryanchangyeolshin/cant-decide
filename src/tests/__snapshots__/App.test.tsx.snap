@@ -98,6 +98,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
           </div>
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-11 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            data-testid="randomize-button"
             disabled=""
             tabindex="-1"
             type="button"

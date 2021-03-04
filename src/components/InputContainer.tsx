@@ -3,13 +3,7 @@ import { makeStyles, createStyles, Theme, } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
 import DecisionContext from '../context/DecisionContext';
 import DecisionState from '../types/DecisionState';
-
-type InputContainerProps = {
-  choice: string,
-  handleKeyDown: React.KeyboardEventHandler<HTMLDivElement>,
-  handleChoiceChange: React.ChangeEventHandler<HTMLInputElement>,
-  randomizeChoice: React.MouseEventHandler<HTMLButtonElement>
-}
+import InputContainerProps from '../types/InputContainerProps';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,6 +75,7 @@ const InputContainer: React.FC<InputContainerProps> = ({ choice, handleKeyDown, 
       />
       <Button
         className={classes.randomize}
+        data-testid="randomize-button"
         variant="contained"
         color="primary"
         disabled={decision.choices.length < 2}

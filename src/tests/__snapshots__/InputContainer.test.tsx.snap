@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`This suit is to test the InputContainer component Snapshot of ChoiceCardContainer 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-inputContainer-1"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-2 MuiFormControl-marginNormal"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-4 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        data-shrink="true"
+        for="standard-basic"
+        id="standard-basic-label"
+      >
+        Choice
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-3"
+          id="standard-basic"
+          placeholder="Please provide your choice here..."
+          type="text"
+          value="Taco Bell"
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+          >
+            <span>
+              Choice
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-5 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+      data-testid="randomize-button"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Randomize
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
