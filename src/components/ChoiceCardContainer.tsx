@@ -10,12 +10,7 @@ import {
   Grow
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-type ChoiceProps = {
-  choice: string,
-  index: number,
-  removeChoice: Function,
-}
+import ChoiceCardContainerProps from '../types/ChoiceCardContainerProps';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,16 +28,20 @@ const useStyles = makeStyles((theme: Theme) =>
       "& .MuiListItemText-root": {
         "& .MuiTypography-root.MuiListItemText-primary": {
           fontWeight: 900,
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverFlow: "ellipsis",
+          width: "95%"
         }
       }
     }
   }),
 );
 
-export default function ChoiceCardContainer({ choice, index, removeChoice }: ChoiceProps) {
+const ChoiceCardContainer: React.FC<ChoiceCardContainerProps> = ({ choice, index, removeChoice }: ChoiceCardContainerProps) => {
   const classes = useStyles();
 
-  const removeChoiceHandler = (e: React.MouseEvent<SVGSVGElement>) => {
+  const removeChoiceHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     removeChoice(index);
   } 
 
@@ -55,8 +54,8 @@ export default function ChoiceCardContainer({ choice, index, removeChoice }: Cho
           </ListItemIcon>
           <ListItemText primary={choice} />
           <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
-              <DeleteIcon onClick={removeChoiceHandler} />
+            <IconButton data-testid="delete-icon" edge="end" aria-label="delete" onClick={removeChoiceHandler}>
+              <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
@@ -64,3 +63,5 @@ export default function ChoiceCardContainer({ choice, index, removeChoice }: Cho
     </Grow>
   );
 }
+
+export default ChoiceCardContainer;

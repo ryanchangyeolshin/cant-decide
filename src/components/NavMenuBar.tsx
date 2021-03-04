@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function NavMenuBar() {
+const NavMenuBar: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -35,3 +35,5 @@ export default function NavMenuBar() {
     </AppBar>
   );
 }
+
+export default NavMenuBar;
