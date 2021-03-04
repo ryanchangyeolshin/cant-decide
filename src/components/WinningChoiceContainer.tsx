@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import {
   Grow,
   Typography,
+  Button
 } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 import DecisionContext from '../context/DecisionContext';
 import DecisionState from '../types/DecisionState';
 
@@ -13,6 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      justifyContent: "space-between",
       backgroundColor: "#4051B6",
       height: "100vh",
       margin: "50px 50px",
@@ -23,16 +26,33 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "white",
       margin: "50px 50px",
       padding: "0 20px",
-      overflowWrap: "break-word",
+      width: "100%",
       wordWrap: "break-word",
-      hyphens: "auto",
+    },
+    returnHomeButton: {
+      backgroundColor: "white",
+      color: "black",
+      marginTop: "20px",
+      marginBottom: "20px",
+      "&:hover": {
+        backgroundColor: "yellow"
+      },
+      "& .MuiButton-label": {
+        fontWeight: 900
+      }
     }
   }),
 );
 
 const WinningChoiceContainer: React.FC = () => {
+  const history = useHistory();
   const classes = useStyles();
   const { winningChoice } = useContext<DecisionState>(DecisionContext);
+
+  const returnHomeHandler: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    history.push("/");
+  }
 
   return (
     <Grow in={true} timeout={1500} mountOnEnter unmountOnExit={true}>
@@ -40,6 +60,24 @@ const WinningChoiceContainer: React.FC = () => {
         <Typography variant="h2" className={classes.winningChoice}>
           {winningChoice}
         </Typography>
+        <iframe
+          title="shia-labeouf-giphy"
+          src="https://giphy.com/embed/GcSqyYa2aF8dy"
+          width="480"
+          height="358"
+          frameBorder="0"
+          className="giphy-embed"
+          allowFullScreen>
+        </iframe>
+        <Button
+          className={classes.returnHomeButton}
+          data-testid="randomize-button"
+          variant="contained"
+          color="primary"
+          onClick={returnHomeHandler}
+        >
+          Return Home
+        </Button>
       </Typography>
     </Grow>
   );

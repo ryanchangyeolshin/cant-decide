@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, getByText, getByTestId, fireEvent, getByLabelText } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import InputContainer from '../components/InputContainer';
 import InputContainerProps from '../types/InputContainerProps';
+
+afterEach(cleanup);
 
 describe("This suit is to test the InputContainer component", () => {
   const props: InputContainerProps = {
@@ -33,7 +35,7 @@ describe("This suit is to test the InputContainer component", () => {
       />
     );
 
-    const input: HTMLInputElement = container.querySelector("#standard-basic");
+    const input = container.querySelector("#standard-basic") as HTMLInputElement;
     expect(input.value).toBe(props.choice);
   });
 
@@ -46,7 +48,7 @@ describe("This suit is to test the InputContainer component", () => {
         randomizeChoice={props.randomizeChoice}
       />
     );
-    const input: HTMLInputElement = container.querySelector("#standard-basic");
+    const input = container.querySelector("#standard-basic") as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'A' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(props.handleChoiceChange).toBeCalled();
@@ -62,7 +64,7 @@ describe("This suit is to test the InputContainer component", () => {
         randomizeChoice={props.randomizeChoice}
       />
     );
-    const randomizeButton: HTMLElement = container.querySelector('button');
+    const randomizeButton = container.querySelector('button') as HTMLElement;
     expect(randomizeButton.textContent).toBe("Randomize");
   });
 });
