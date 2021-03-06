@@ -56,7 +56,7 @@ const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
               </Typography>
             </div>
           ) : (
-            <Button color="inherit" onClick={() => loginWithRedirect()}>
+            <Button className="login-button" color="inherit" onClick={() => loginWithRedirect()}>
               Login
             </Button>
           )

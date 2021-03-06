@@ -3,17 +3,17 @@
 exports[`This suit is to test the App component Snapshot of App 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="makeStyles-app-1"
   >
     <header
       class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-regular makeStyles-toolBar-2 MuiToolbar-gutters"
+        class="MuiToolbar-root MuiToolbar-regular makeStyles-toolBar-3 MuiToolbar-gutters"
       >
         <button
           aria-label="menu"
-          class="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-3 MuiIconButton-colorInherit MuiIconButton-edgeStart"
+          class="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-4 MuiIconButton-colorInherit MuiIconButton-edgeStart"
           tabindex="0"
           type="button"
         >
@@ -36,7 +36,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text login-button MuiButton-colorInherit"
           tabindex="0"
           type="button"
         >
@@ -51,20 +51,21 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
         </button>
       </div>
     </header>
+    <div />
     <div
-      class="makeStyles-containerWrapper-4"
+      class="makeStyles-containerWrapper-11"
     >
       <div
-        class="MuiTypography-root makeStyles-contentContainer-5 MuiTypography-body1"
+        class="MuiTypography-root makeStyles-contentContainer-12 MuiTypography-body1"
       >
         <div
-          class="makeStyles-inputContainer-7"
+          class="makeStyles-inputContainer-14"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-8 MuiFormControl-marginNormal"
+            class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-15 MuiFormControl-marginNormal"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-10 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+              class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-17 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
               data-shrink="false"
               for="standard-basic"
               id="standard-basic-label"
@@ -76,7 +77,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
             >
               <input
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-9"
+                class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-16"
                 id="standard-basic"
                 placeholder="Please provide your choice here..."
                 type="text"
@@ -84,10 +85,10 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
               />
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-19 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-14"
+                  class="PrivateNotchedOutline-legendLabelled-21"
                 >
                   <span>
                     Choice
@@ -97,7 +98,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-11 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-18 MuiButton-containedPrimary Mui-disabled Mui-disabled"
             data-testid="randomize-button"
             disabled=""
             tabindex="-1"
@@ -111,7 +112,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
           </button>
         </div>
         <div
-          class="makeStyles-list-6"
+          class="makeStyles-list-13"
         >
           <nav
             aria-label="main mailbox folders"
