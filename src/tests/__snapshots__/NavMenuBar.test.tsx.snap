@@ -32,6 +32,16 @@ exports[`This suit is to test the NavMenuBar component Snapshot of NavMenuBar 1`
           class="MuiTouchRipple-root"
         />
       </button>
+      <span
+        class="makeStyles-typed-7"
+      >
+        <span />
+        <span
+          class="typed-cursor"
+        >
+          |
+        </span>
+      </span>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-text login-button MuiButton-colorInherit"
         tabindex="0"
