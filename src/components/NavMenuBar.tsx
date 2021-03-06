@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { Menu as MenuIcon } from "@material-ui/icons";
+import NavMenuBarType from '../types/NavMenuBarType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,7 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
     toolBar: {
       display: "flex",
       flexDirection: "row",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      background: "#154A40",
+      color: "white"
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -21,14 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const NavMenuBar: React.FC = () => {
+const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
   const classes = useStyles();
 
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolBar}>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon />
+          <MenuIcon onClick={toggleDrawer(true)} />
         </IconButton>
         <Button color="inherit">Login</Button>
       </Toolbar>

@@ -15,15 +15,16 @@ import ChoiceCardContainerProps from '../types/ChoiceCardContainerProps';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     listItem: {
-      backgroundColor: "white",
+      background: '#F4ECDA',
+      color: "black",
       marginBottom: "10px",
       borderRadius: "4px",
       padding: "20px",
-      transition: theme.transitions.create("background-color", {
+      transition: theme.transitions.create("background", {
         duration: 1000
       }),
       "&:hover": {
-        backgroundColor: "yellow",
+        background: "yellow",
       },
       "& .MuiListItemText-root": {
         "& .MuiTypography-root.MuiListItemText-primary": {
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme: Theme) =>
           textOverFlow: "ellipsis",
           width: "95%"
         }
+      },
+      "& .MuiBadge-colorPrimary": {
+        background: "black"
       }
     }
   }),

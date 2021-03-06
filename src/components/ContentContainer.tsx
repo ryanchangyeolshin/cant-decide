@@ -11,7 +11,7 @@ import DecisionState from '../types/DecisionState';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     containerWrapper: {
-      maxWidth: "100%"
+      maxWidth: "100%",
     },
     contentContainer: {
       display: "flex",
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "100vh",
       margin: "50px 50px",
       borderRadius: "20px",
+      background: "#154A40 !important",
+      color: "white",
+      boxShadow: "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)"
     },
     list: {
       width: '100%',
