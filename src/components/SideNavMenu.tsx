@@ -52,7 +52,7 @@ const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
         )}
         <ListItem button key="logout">
           <ListItemIcon className={classes.listItemIcons}><PersonIcon /></ListItemIcon>
-          <ListItemText primary="Logout" onClick={() => logout({ returnTo: window.location.origin })} />
+          <ListItemText className="logout" primary="Logout" onClick={() => logout({ returnTo: window.location.origin })} />
         </ListItem>
       </List>
     </div>
