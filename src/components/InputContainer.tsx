@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "white",
     },
     randomize: {
-      backgroundColor: "white",
+      backgroundColor: "#F4ECDA",
       color: "black",
       marginTop: "40px",
       marginBottom: "10px",
