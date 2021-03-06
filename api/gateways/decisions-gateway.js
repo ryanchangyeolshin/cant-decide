@@ -4,12 +4,8 @@ module.exports = decisions => {
         const decisionData = await decisions.insertOne(data);
         return decisionData.ops[0];
       },
-      async findDecisionsByEmail(email) {
-        const decisionsData = await decisions.find({ email });
-        return decisionsData;
-      },
-      async findDecisionById(id) {
-        const decisionsData = await decisions.findOne({ id });
+      async findDecisionsByAttribute(attribute, value) {
+        const decisionsData = await decisions.find({ [attribute]: value }).toArray();
         return decisionsData;
       },
     }

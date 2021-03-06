@@ -2,6 +2,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppBar, Toolbar, Button, Icon, IconButton, Typography } from '@material-ui/core';
 import { Menu as MenuIcon, Person as PersonIcon } from "@material-ui/icons";
+import Typed from 'react-typed';
 import NavMenuBarType from '../types/NavMenuBarType';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     personIcon: {
       marginRight: "10px"
+    },
+    typed: {
+      fontWeight: 900,
+      fontSize: "1.5rem"
     }
   }),
 );
@@ -47,6 +52,17 @@ const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           <MenuIcon onClick={toggleDrawer(true)} />
         </IconButton>
+        <Typed
+          className={classes.typed}
+          strings={[
+          "Let's eat McDonalds",
+          "Let's eat Taco Bell",
+          "Can't Decide..."
+        ]}
+          typeSpeed={40}
+          backSpeed={50}
+          smartBackspace
+        />
         {
           isAuthenticated ? (
             <div className={classes.loggedIn}>

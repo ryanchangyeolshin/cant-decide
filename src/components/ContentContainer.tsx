@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     containerWrapper: {
       maxWidth: "100%",
+      height: "100vh"
     },
     contentContainer: {
       display: "flex",
