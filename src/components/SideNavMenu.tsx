@@ -15,10 +15,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     header: {
       color: "white",
-      fontFamily: 'Brush Script MT, cursive',
       fontWeight: 900,
       margin: "7px 20px",
-      letterSpacing: "4px"
+      letterSpacing: "2px"
     },
     listItemIcons: {
       color: "white"

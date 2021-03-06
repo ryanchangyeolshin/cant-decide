@@ -7,7 +7,7 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import DecisionProvider from './context/DecisionProvider';
 import NavMenuBar from './components/NavMenuBar';
-import SideNavMenu from "./components/SideNavMenu";
+import SideNavMenu from './components/SideNavMenu';
 import ContentContainer from './components/ContentContainer';
 import WinningChoiceContainer from './components/WinningChoiceContainer';
 import './App.css';
