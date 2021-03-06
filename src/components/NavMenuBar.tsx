@@ -1,9 +1,7 @@
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import { Menu as MenuIcon } from "@material-ui/icons";
+import { useAuth0 } from "@auth0/auth0-react";
+import { AppBar, Toolbar, Button, Icon, IconButton, Typography } from '@material-ui/core';
+import { Menu as MenuIcon, Person as PersonIcon } from "@material-ui/icons";
 import NavMenuBarType from '../types/NavMenuBarType';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -21,11 +19,27 @@ const useStyles = makeStyles((theme: Theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
     },
+    loggedIn: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between"
+    },
+    username: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      fontSize: "1.05rem",
+      fontWeight: 500,
+    },
+    personIcon: {
+      marginRight: "10px"
+    }
   }),
 );
 
 const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
   const classes = useStyles();
+  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
   return (
     <AppBar position="static">
@@ -33,7 +47,20 @@ const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           <MenuIcon onClick={toggleDrawer(true)} />
         </IconButton>
-        <Button color="inherit">Login</Button>
+        {
+          isAuthenticated ? (
+            <div className={classes.loggedIn}>
+              <Icon className={classes.personIcon}><PersonIcon /></Icon>
+              <Typography variant="h6" className={classes.username}>
+                {user.name}
+              </Typography>
+            </div>
+          ) : (
+            <Button color="inherit" onClick={() => loginWithRedirect()}>
+              Login
+            </Button>
+          )
+        }
       </Toolbar>
     </AppBar>
   );

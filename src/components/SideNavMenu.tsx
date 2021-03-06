@@ -1,6 +1,7 @@
 import React from 'react';
 import { Drawer, List, Divider, Typography, ListItem, ListItemIcon, ListItemText, makeStyles, createStyles, Theme } from '@material-ui/core';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import { useAuth0 } from "@auth0/auth0-react";
+import { Inbox as InboxIcon, Person as PersonIcon } from '@material-ui/icons';
 import SideNavMenuType from '../types/SideNavMenuType';
 
 type Anchor = "left" | "right" | "top" | "bottom" | undefined
@@ -18,7 +19,10 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 900,
       margin: "7px 20px",
       letterSpacing: "4px"
-    }
+    },
+    listItemIcons: {
+      color: "white"
+    },
   }),
 );
 
@@ -26,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
   const anchor: Anchor = "left";
   const classes = useStyles();
+  const { logout, isAuthenticated } = useAuth0();
 
   const list = (anchor: Anchor) => (
     <div
@@ -39,9 +44,15 @@ const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
           Can't Decide
         </Typography>
         <Divider />
-        <ListItem button key="save">
-          <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary="Save" />
+        {isAuthenticated && (
+          <ListItem button key="save">
+            <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
+            <ListItemText primary="Save" />
+          </ListItem>
+        )}
+        <ListItem button key="logout">
+          <ListItemIcon className={classes.listItemIcons}><PersonIcon /></ListItemIcon>
+          <ListItemText primary="Logout" onClick={() => logout({ returnTo: window.location.origin })} />
         </ListItem>
       </List>
     </div>
