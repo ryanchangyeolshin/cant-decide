@@ -33,6 +33,7 @@ const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuTyp
 
   const list = (anchor: Anchor) => (
     <div
+      id="list-wrapper"
       className={classes.list}
       role="presentation"
       onClick={toggleDrawer(false)}
@@ -44,14 +45,14 @@ const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuTyp
         </Typography>
         <Divider />
         {isAuthenticated && (
-          <ListItem button key="save">
+          <ListItem id="save-button" button key="save" onClick={handleOpenModal}>
             <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
-            <ListItemText primary="Save" onClick={handleOpenModal} />
+            <ListItemText primary="Save" />
           </ListItem>
         )}
-        <ListItem button key="logout">
+        <ListItem button key="logout" onClick={() => logout({ returnTo: window.location.origin })}>
           <ListItemIcon className={classes.listItemIcons}><PersonIcon /></ListItemIcon>
-          <ListItemText className="logout" primary="Logout" onClick={() => logout({ returnTo: window.location.origin })} />
+          <ListItemText className="logout" primary="Logout" />
         </ListItem>
       </List>
     </div>
