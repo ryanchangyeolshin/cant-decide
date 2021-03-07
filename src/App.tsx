@@ -10,6 +10,8 @@ import NavMenuBar from './components/NavMenuBar';
 import SideNavMenu from './components/SideNavMenu';
 import ContentContainer from './components/ContentContainer';
 import WinningChoiceContainer from './components/WinningChoiceContainer';
+import SaveDecisionModal from './components/SaveDecisionModal';
+import DecisionSnackbar from './components/DecisionSnackbar';
 import './App.css';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -24,6 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const App: React.FC = () => {
   const classes = useStyles();
   const [sideMenu, setSideMenu] = useState<boolean>(false);
+  const [openModal, setOpenModel] = useState<boolean>(false);
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
   const toggleDrawer = (open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent,
@@ -39,11 +43,31 @@ const App: React.FC = () => {
     setSideMenu(open);
   };
 
+  const handleOpenSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
+    setOpenSnackbar(true);
+  };
+  
+  const handleCloseSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  const handleOpenModal: React.MouseEventHandler<HTMLElement>
+    = (event: React.MouseEvent<HTMLElement>) => setOpenModel(true);
+  
+  const handleCloseModal: React.MouseEventHandler<HTMLElement> = (event: React.MouseEvent<HTMLElement>) => {
+    setOpenModel(false);
+    handleOpenSnackbar();
+  }
+
   return (
     <div className={classes.app}>
       <DecisionProvider>
         <NavMenuBar toggleDrawer={toggleDrawer} />
-        <SideNavMenu sideMenu={sideMenu} toggleDrawer={toggleDrawer} />
+        <SideNavMenu sideMenu={sideMenu} toggleDrawer={toggleDrawer} handleOpenModal={handleOpenModal} />
+        <SaveDecisionModal open={openModal} handleClose={handleCloseModal} />
         <Router>
           <Switch>
             <Route path="/decision">
@@ -55,6 +79,7 @@ const App: React.FC = () => {
           </Switch>
         </Router>
       </DecisionProvider>
+      <DecisionSnackbar open={openSnackbar} handleClose={handleCloseSnackbar} />
     </div>
   );
 }

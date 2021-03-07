@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
     username: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
-      fontSize: "1.05rem",
+      justifyContent: "flex-end",
+      fontSize: "0.8rem",
       fontWeight: 500,
     },
     personIcon: {
@@ -68,7 +68,7 @@ const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
             <div className={classes.loggedIn}>
               <Icon className={classes.personIcon}><PersonIcon /></Icon>
               <Typography variant="h6" className={classes.username}>
-                {user.name}
+                {user.name.substring(0, user.name.lastIndexOf("@"))}
               </Typography>
             </div>
           ) : (

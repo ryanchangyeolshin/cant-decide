@@ -26,13 +26,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
+const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuType) => {
   const anchor: Anchor = "left";
   const classes = useStyles();
   const { logout, isAuthenticated } = useAuth0();
 
   const list = (anchor: Anchor) => (
     <div
+      id="list-wrapper"
       className={classes.list}
       role="presentation"
       onClick={toggleDrawer(false)}
@@ -44,14 +45,14 @@ const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
         </Typography>
         <Divider />
         {isAuthenticated && (
-          <ListItem button key="save">
+          <ListItem id="save-button" button key="save" onClick={handleOpenModal}>
             <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
             <ListItemText primary="Save" />
           </ListItem>
         )}
-        <ListItem button key="logout">
+        <ListItem button key="logout" onClick={() => logout({ returnTo: window.location.origin })}>
           <ListItemIcon className={classes.listItemIcons}><PersonIcon /></ListItemIcon>
-          <ListItemText className="logout" primary="Logout" onClick={() => logout({ returnTo: window.location.origin })} />
+          <ListItemText className="logout" primary="Logout" />
         </ListItem>
       </List>
     </div>
