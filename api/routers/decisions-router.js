@@ -14,9 +14,15 @@ const decisionsRouter = decisions => {
         return res.status(400).json(e);
       }
     })
-    .post('/', async ({ body: { decision } }, res) => {
+    .post('/', async ({ body: { user, name, choices } }, res) => {
       try {
-        const decisionData = await createDecision(decision);
+        const data = {
+          user: user,
+          name: name,
+          choices: choices,
+        };
+        console.log(data);
+        const decisionData = await createDecision(data);
         return res.status(201).json(decisionData);
       } catch(e) {
         return res.status(400).json(e);
