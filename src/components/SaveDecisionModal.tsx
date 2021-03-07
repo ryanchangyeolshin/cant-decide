@@ -79,7 +79,7 @@ const SaveDecisionModal = ({ open, handleClose, handleOpenSnackbar }: SaveDecisi
       choices: decision.choices
     };
     await instance.post('/decisions', data);
-    handleClose(e);
+    handleClose(e, "save");
     handleOpenSnackbar(e);
   };
 
@@ -89,7 +89,7 @@ const SaveDecisionModal = ({ open, handleClose, handleOpenSnackbar }: SaveDecisi
       aria-describedby="transition-modal-description"
       className={classes.modal}
       open={open}
-      onClose={handleClose}
+      onClose={(e: React.MouseEvent<HTMLElement>) => handleClose(e, "save")}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{

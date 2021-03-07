@@ -5,13 +5,18 @@ import {
   Route,
 } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { AxiosResponse } from 'axios';
+import instance from './utils/axios-instance';
+import { useAuth0 } from "@auth0/auth0-react";
 import DecisionProvider from './context/DecisionProvider';
 import NavMenuBar from './components/NavMenuBar';
 import SideNavMenu from './components/SideNavMenu';
 import ContentContainer from './components/ContentContainer';
 import WinningChoiceContainer from './components/WinningChoiceContainer';
+import LoadDecisionModal from './components/LoadDecisionModal';
 import SaveDecisionModal from './components/SaveDecisionModal';
 import DecisionSnackbar from './components/DecisionSnackbar';
+import DecisionDataType from './types/DecisionDataType';
 import './App.css';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -24,9 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const App: React.FC = () => {
+  const { user } = useAuth0();
   const classes = useStyles();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [decisions, setDecisions] = useState<DecisionDataType[]>([]);
   const [sideMenu, setSideMenu] = useState<boolean>(false);
   const [openSaveModal, setOpenSaveModal] = useState<boolean>(false);
+  const [openLoadModal, setOpenLoadModal] = useState<boolean>(false);
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
   const toggleDrawer = (open: boolean) => (
@@ -54,11 +63,24 @@ const App: React.FC = () => {
     setOpenSnackbar(false);
   };
 
-  const handleOpenModal: React.MouseEventHandler<HTMLElement>
-    = (event: React.MouseEvent<HTMLElement>) => setOpenSaveModal(true);
+  const handleOpenModal = async (event: React.MouseEvent<HTMLElement>, modalType: string) => {
+    if (modalType === "save") {
+      setOpenSaveModal(true);
+    } else {
+      setOpenLoadModal(true);
+      setLoading(true);
+      const { data }: AxiosResponse<DecisionDataType[]> = await instance.get(`/decisions/${user.name}`);
+      setDecisions(data);
+      setLoading(false);
+    }
+  }
   
-  const handleCloseModal: React.MouseEventHandler<HTMLElement> = (event: React.MouseEvent<HTMLElement>) => {
-    setOpenSaveModal(false);
+  const handleCloseModal = (event: React.MouseEvent<HTMLElement>, modalType: string) => {
+    if (modalType === "save") {
+      setOpenSaveModal(false);
+    } else {
+      setOpenLoadModal(false);
+    }
   }
 
   return (
@@ -66,6 +88,7 @@ const App: React.FC = () => {
       <DecisionProvider>
         <NavMenuBar toggleDrawer={toggleDrawer} />
         <SideNavMenu sideMenu={sideMenu} toggleDrawer={toggleDrawer} handleOpenModal={handleOpenModal} />
+        <LoadDecisionModal open={openLoadModal} handleClose={handleCloseModal} decisions={decisions} loading={loading} />
         <SaveDecisionModal open={openSaveModal} handleClose={handleCloseModal} handleOpenSnackbar={handleOpenSnackbar} />
         <Router>
           <Switch>
