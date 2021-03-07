@@ -45,6 +45,12 @@ const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuTyp
         </Typography>
         <Divider />
         {isAuthenticated && (
+          <ListItem id="load-button" button key="load" onClick={handleOpenModal}>
+            <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
+            <ListItemText primary="Load" />
+          </ListItem>
+        )}
+        {isAuthenticated && (
           <ListItem id="save-button" button key="save" onClick={handleOpenModal}>
             <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
             <ListItemText primary="Save" />

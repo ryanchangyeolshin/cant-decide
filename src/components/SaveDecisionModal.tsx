@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const SaveDecisionModal = ({ open, handleClose }: SaveDecisionModalType) => {
+const SaveDecisionModal = ({ open, handleClose, handleOpenSnackbar }: SaveDecisionModalType) => {
   const { decision, setDecision } = useContext(DecisionContext);
   const { user } = useAuth0();
   const classes = useStyles();
@@ -80,6 +80,7 @@ const SaveDecisionModal = ({ open, handleClose }: SaveDecisionModalType) => {
     };
     await instance.post('/decisions', data);
     handleClose(e);
+    handleOpenSnackbar(e);
   };
 
   return (

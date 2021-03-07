@@ -8,11 +8,18 @@ afterEach(cleanup);
 describe("This suit is to test the SideNavMenu component", () => {
   const props: SaveDecisionModalType = {
     open: true,
-    handleClose: (event: React.MouseEvent<HTMLElement>) => "closed modal!"
+    handleClose: (event: React.MouseEvent<HTMLElement>) => "closed modal!",
+    handleOpenSnackbar: (event?: React.SyntheticEvent, reason?: string) => "opened snackbar!"
   };
 
   test('Snapshot of SideNavMenu', () => {
-    const { asFragment } = render(<SaveDecisionModal open={props.open} handleClose={props.handleClose} />);
+    const { asFragment } = render(
+      <SaveDecisionModal
+        open={props.open}
+        handleClose={props.handleClose}
+        handleOpenSnackbar={props.handleOpenSnackbar}
+      />
+    );
     expect(asFragment()).toMatchSnapshot()
   });
 });

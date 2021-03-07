@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const App: React.FC = () => {
   const classes = useStyles();
   const [sideMenu, setSideMenu] = useState<boolean>(false);
-  const [openModal, setOpenModel] = useState<boolean>(false);
+  const [openSaveModal, setOpenSaveModal] = useState<boolean>(false);
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
   const toggleDrawer = (open: boolean) => (
@@ -55,11 +55,10 @@ const App: React.FC = () => {
   };
 
   const handleOpenModal: React.MouseEventHandler<HTMLElement>
-    = (event: React.MouseEvent<HTMLElement>) => setOpenModel(true);
+    = (event: React.MouseEvent<HTMLElement>) => setOpenSaveModal(true);
   
   const handleCloseModal: React.MouseEventHandler<HTMLElement> = (event: React.MouseEvent<HTMLElement>) => {
-    setOpenModel(false);
-    handleOpenSnackbar();
+    setOpenSaveModal(false);
   }
 
   return (
@@ -67,7 +66,7 @@ const App: React.FC = () => {
       <DecisionProvider>
         <NavMenuBar toggleDrawer={toggleDrawer} />
         <SideNavMenu sideMenu={sideMenu} toggleDrawer={toggleDrawer} handleOpenModal={handleOpenModal} />
-        <SaveDecisionModal open={openModal} handleClose={handleCloseModal} />
+        <SaveDecisionModal open={openSaveModal} handleClose={handleCloseModal} handleOpenSnackbar={handleOpenSnackbar} />
         <Router>
           <Switch>
             <Route path="/decision">
