@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
+const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuType) => {
   const anchor: Anchor = "left";
   const classes = useStyles();
   const { logout, isAuthenticated } = useAuth0();
@@ -46,7 +46,7 @@ const SideNavMenu = ({ sideMenu, toggleDrawer }: SideNavMenuType) => {
         {isAuthenticated && (
           <ListItem button key="save">
             <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
-            <ListItemText primary="Save" />
+            <ListItemText primary="Save" onClick={handleOpenModal} />
           </ListItem>
         )}
         <ListItem button key="logout">
