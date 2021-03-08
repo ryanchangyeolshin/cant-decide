@@ -1,5 +1,5 @@
 type DecisionDataType = {
-  id?: string,
+  _id?: string,
   user: string,
   name: string,
   choices: string[],
