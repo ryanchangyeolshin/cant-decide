@@ -63,7 +63,6 @@ const ContentContainer: React.FC = () => {
     const randomIndex: number = Math.floor(Math.random() * decision.choices.length);
     setWinningChoice(decision.choices[randomIndex]);
     history.push("/decision");
-    setDecision({ ...decision, choices: [] });
   }
 
   return (

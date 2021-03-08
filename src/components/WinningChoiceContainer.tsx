@@ -50,10 +50,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const WinningChoiceContainer: React.FC = () => {
   const history = useHistory();
   const classes = useStyles();
-  const { winningChoice } = useContext<DecisionState>(DecisionContext);
+  const { winningChoice, decision, setDecision } = useContext<DecisionState>(DecisionContext);
 
   const returnHomeHandler: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setDecision({ ...decision, choices: [] });
     history.push("/");
   }
 

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const LoadDecisionModal = ({ open, handleClose, decisions, loading }: LoadDecisionModalType) => {
+const LoadDecisionModal: React.FC<LoadDecisionModalType> = ({ open, handleClose, decisions, loading }: LoadDecisionModalType) => {
   const { setDecision } = useContext(DecisionContext);
   const [selectedDecision, setSelectedDecision] = useState<DecisionDataType>({ _id: "", user: "", name: "", choices: [] });
   const classes = useStyles();
@@ -95,8 +95,8 @@ const LoadDecisionModal = ({ open, handleClose, decisions, loading }: LoadDecisi
               ))}
             </List>
             <Button
+              id="load-decision-button"
               className={classes.loadDecision}
-              data-testid="save-decision-button"
               variant="contained"
               color="primary"
               disabled={selectedDecision._id === ""}

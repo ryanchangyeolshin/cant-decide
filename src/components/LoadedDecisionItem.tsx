@@ -47,7 +47,7 @@ const LoadedDecisionItem: React.FC<LoadedDecisionItemType> = ({ decision, setSel
         onClick={(e: React.MouseEvent<HTMLElement>) => setSelectedDecisionHandler(e, decision)}
       >
         <ListItem button className={classes.listItem}>
-          <ListItemText primary={decision.name} />
+          <ListItemText id="decision-text" primary={decision.name} />
         </ListItem>
       </div>
     </Grow>
