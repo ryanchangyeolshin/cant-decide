@@ -68,6 +68,7 @@ const LoadDecisionModal: React.FC<LoadDecisionModalType> = ({ open, handleClose,
 
   return (
     <Modal
+      id="load-decision-modal"
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}

@@ -5,8 +5,6 @@ import LoadDecisionModalType from '../types/LoadDecisionModalType';
 
 afterEach(cleanup);
 
-jest.useFakeTimers();
-
 describe("This suit is to test the LoadDecisionModal component", () => {
   const props: LoadDecisionModalType = {
     open: true,
@@ -16,7 +14,7 @@ describe("This suit is to test the LoadDecisionModal component", () => {
   };
 
   test('Snapshot of LoadDecisionModal', () => {
-    const { asFragment } = render(
+    render(
       <LoadDecisionModal
         open={true}
         handleClose={props.handleClose}
@@ -24,7 +22,20 @@ describe("This suit is to test the LoadDecisionModal component", () => {
         loading={props.loading}
       />
     );
-    jest.advanceTimersByTime(30000);
-    expect(asFragment()).toMatchSnapshot()
+    const modal = document.querySelector("#load-decision-modal");
+    expect(modal).toMatchSnapshot()
+  });
+
+  test('that the Load Decision button is rendered', async () => {
+    render(
+      <LoadDecisionModal
+        open={true}
+        handleClose={props.handleClose}
+        decisions={props.decisions}
+        loading={props.loading}
+      />
+    );
+    const randomizeButton = document.querySelector('button') as HTMLElement;
+    expect(randomizeButton.textContent).toBe("Load Decision");
   });
 });
