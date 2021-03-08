@@ -49,8 +49,8 @@ const NavMenuBar = ({ toggleDrawer }: NavMenuBarType) => {
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolBar}>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <MenuIcon onClick={toggleDrawer(true)} />
+        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
+          <MenuIcon />
         </IconButton>
         <Typed
           className={classes.typed}
