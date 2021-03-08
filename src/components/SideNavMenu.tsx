@@ -1,7 +1,7 @@
 import React from 'react';
 import { Drawer, List, Divider, Typography, ListItem, ListItemIcon, ListItemText, makeStyles, createStyles, Theme } from '@material-ui/core';
 import { useAuth0 } from "@auth0/auth0-react";
-import { Inbox as InboxIcon, Person as PersonIcon } from '@material-ui/icons';
+import { CloudUpload as CloudUploadIcon, Save as SaveIcon, Person as PersonIcon } from '@material-ui/icons';
 import SideNavMenuType from '../types/SideNavMenuType';
 
 type Anchor = "left" | "right" | "top" | "bottom" | undefined
@@ -46,13 +46,13 @@ const SideNavMenu = ({ sideMenu, toggleDrawer, handleOpenModal }: SideNavMenuTyp
         <Divider />
         {isAuthenticated && (
           <ListItem id="load-button" button key="load" onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenModal(e, "load")}>
-            <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
+            <ListItemIcon className={classes.listItemIcons}><CloudUploadIcon /></ListItemIcon>
             <ListItemText primary="Load" />
           </ListItem>
         )}
         {isAuthenticated && (
           <ListItem id="save-button" button key="save" onClick={(e: React.MouseEvent<HTMLElement>) => handleOpenModal(e, "save")}>
-            <ListItemIcon className={classes.listItemIcons}><InboxIcon /></ListItemIcon>
+            <ListItemIcon className={classes.listItemIcons}><SaveIcon /></ListItemIcon>
             <ListItemText primary="Save" />
           </ListItem>
         )}
