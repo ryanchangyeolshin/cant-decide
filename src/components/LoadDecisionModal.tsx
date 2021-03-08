@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Button, CircularProgress } from '@material-ui/core';
+import { Modal, Backdrop, Fade, Button, CircularProgress, List } from '@material-ui/core';
+import LoadedDecisionItem from './LoadedDecisionItem';
 import LoadDecisionModalType from '../types/LoadDecisionModalType';
 import DecisionContext from '../context/DecisionContext';
+import DecisionDataType from '../types/DecisionDataType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,31 +23,16 @@ const useStyles = makeStyles((theme: Theme) =>
       background: "#154A40",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      justifyContent: "space-between",
       padding: "30px",
-      width: "80%"
-    },
-    decisionInput: {
-      width: "100%",
-      margin: "40px 10px 10px 0",
-      color: "white",
-      "& .MuiFormLabel-root.Mui-focused": {
-        color: "white"
-      },
-      "& .MuiOutlinedInput-root": {
-        "& .MuiOutlinedInput-notchedOutline": {
-          borderColor: "white"
-        }
+      width: "80%",
+      height: "80%",
+      "& .MuiList-root": {
+        height: "100%",
+        overflow: "scroll",
       }
     },
-    input: {
-      color: "white",
-      outline: 1,
-    },
-    label: {
-      color: "white",
-    },
-    saveDecision: {
+    loadDecision: {
       backgroundColor: "#F4ECDA",
       color: "black",
       marginTop: "40px",
@@ -61,8 +48,23 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const LoadDecisionModal = ({ open, handleClose, decisions, loading }: LoadDecisionModalType) => {
-  const { decision, setDecision } = useContext(DecisionContext);
+  const { setDecision } = useContext(DecisionContext);
+  const [selectedDecision, setSelectedDecision] = useState<DecisionDataType>({ _id: "", user: "", name: "", choices: [] });
   const classes = useStyles();
+
+  const handleCloseModalHandler = (e: React.MouseEvent<HTMLElement>) => {
+    setSelectedDecision({ _id: "", user: "", name: "", choices: [] });
+    handleClose(e, "load");
+  }
+
+  const setSelectedDecisionHandler = (e: React.MouseEvent<HTMLElement>, decision: DecisionDataType) => {
+    setSelectedDecision(decision);
+  };
+
+  const loadDecisionHandler: React.MouseEventHandler<HTMLButtonElement> = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setDecision(selectedDecision);
+    handleCloseModalHandler(e);
+  };
 
   return (
     <Modal
@@ -70,7 +72,7 @@ const LoadDecisionModal = ({ open, handleClose, decisions, loading }: LoadDecisi
       aria-describedby="transition-modal-description"
       className={classes.modal}
       open={open}
-      onClose={(e: React.MouseEvent<HTMLElement>) => handleClose(e, "load")}
+      onClose={handleCloseModalHandler}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
@@ -83,18 +85,22 @@ const LoadDecisionModal = ({ open, handleClose, decisions, loading }: LoadDecisi
         ) : (
         <Fade in={open}>
           <div className={classes.modalScreen}>
-            {decisions.map(savedDecision => (
-              <div key={savedDecision.id}>
-                {savedDecision.name}
-              </div>
-            ))}
+            <List>
+              {decisions.map(savedDecision => (
+                <LoadedDecisionItem
+                  key={savedDecision._id}
+                  decision={savedDecision}
+                  setSelectedDecisionHandler={setSelectedDecisionHandler}
+                />
+              ))}
+            </List>
             <Button
-              className={classes.saveDecision}
+              className={classes.loadDecision}
               data-testid="save-decision-button"
               variant="contained"
               color="primary"
-              disabled={decision.name.length < 1}
-              // onClick={loadDecisionHandler}
+              disabled={selectedDecision._id === ""}
+              onClick={loadDecisionHandler}
             >
               Load Decision
             </Button>
