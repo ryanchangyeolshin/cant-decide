@@ -63,19 +63,19 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
     </header>
     <div />
     <div
-      class="makeStyles-containerWrapper-19"
+      class="makeStyles-containerWrapper-23"
     >
       <div
-        class="MuiTypography-root makeStyles-contentContainer-20 MuiTypography-body1"
+        class="MuiTypography-root makeStyles-contentContainer-24 MuiTypography-body1"
       >
         <div
-          class="makeStyles-inputContainer-22"
+          class="makeStyles-inputContainer-26"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-23 MuiFormControl-marginNormal"
+            class="MuiFormControl-root MuiTextField-root makeStyles-choiceInput-27 MuiFormControl-marginNormal"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-25 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+              class="MuiFormLabel-root MuiInputLabel-root makeStyles-label-29 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
               data-shrink="false"
               for="standard-basic"
               id="standard-basic-label"
@@ -87,7 +87,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
             >
               <input
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-24"
+                class="MuiInputBase-input MuiOutlinedInput-input makeStyles-input-28"
                 id="standard-basic"
                 placeholder="Please provide your choice here..."
                 type="text"
@@ -95,10 +95,10 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
               />
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-27 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-29"
+                  class="PrivateNotchedOutline-legendLabelled-33"
                 >
                   <span>
                     Choice
@@ -108,7 +108,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-26 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-randomize-30 MuiButton-containedPrimary Mui-disabled Mui-disabled"
             data-testid="randomize-button"
             disabled=""
             tabindex="-1"
@@ -122,7 +122,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
           </button>
         </div>
         <div
-          class="makeStyles-list-21"
+          class="makeStyles-list-25"
         >
           <nav
             aria-label="main mailbox folders"
@@ -132,7 +132,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
       </div>
     </div>
     <div
-      class="makeStyles-root-31"
+      class="makeStyles-root-35"
     />
   </div>
 </DocumentFragment>

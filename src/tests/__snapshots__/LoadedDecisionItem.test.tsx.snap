@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`This suit is to test the LoadedDecisionItem component Snapshot of LoadDecisionModal 1`] = `
+<DocumentFragment>
+  <div
+    class="loaded-decision-item-container"
+    style="opacity: 1; transform: scale(1, 1); transition: opacity 1500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 999ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+  >
+    <div
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiListItem-root makeStyles-listItem-1 MuiListItem-gutters MuiListItem-button"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="MuiListItemText-root"
+        id="decision-text"
+      >
+        <span
+          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+        >
+          What to eat?!
+        </span>
+      </div>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
