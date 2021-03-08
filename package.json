@@ -15,6 +15,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
+    "concurrently": "^6.0.0",
     "cors": "^2.8.5",
     "enzyme": "^3.11.0",
     "mongodb": "^3.6.4",
@@ -28,11 +29,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:client": "react-scripts start",
+    "start:server": "nodemon ./api/index.js",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon ./api/index.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
